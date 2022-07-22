@@ -1,4 +1,19 @@
-set runtimepath^=~/.vim runtimepath+=~/.vim/after runtimepath+=~/.config/nvim/ runtimepath+=/home/manager/.cache/dein/repos/github.com/Shougo/dein.vim
+"Check OS
+let dein_path_base = ''
+let uname = substitute(system('uname'), '\n', '', '')
+if uname == 'Darwin'
+    let dein_path_base = '/Users/willochowicz/'
+    set guifont=Fira\ Mono:h11
+elseif uname == 'Linux'
+    let dein_path_base = '/home/manager/'
+    set guifont=Liberation\ Mono:h11
+end
+
+let dein_path = dein_path_base . '.cache/dein/repos/github.com/Shougo/dein.vim'
+
+
+set runtimepath^=~/.vim runtimepath+=~/.vim/after runtimepath+=~/.config/nvim/
+exe 'set runtimepath+=' . dein_path
 let &packpath = &runtimepath
 source ~/.vimrc
 
@@ -13,10 +28,10 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
-" Required:
+
 
 " Required:
-call dein#begin('/home/manager/.cache/dein')
+call dein#begin(dein_path)
 
     " Let dein manage dein
     " Required:
@@ -54,7 +69,6 @@ endif
 
 "Misc settings
 colorscheme nightfox
-set guifont=Liberation\ Mono:h11
 nnoremap <Leader>e :tabnew ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>E :source ~/.config/nvim/init.vim<CR>
 set hidden
@@ -70,7 +84,10 @@ tnoremap <A-k> <Up>
 
 "NvimTree
 nnoremap <silent> <F2> :NvimTreeToggle<CR>
-
+if exists("g:neovide")
+    " Put anything you want to happen only in Neovide here
+    nnoremap <F11> :let g:neovide_fullscreen = !g:neovide_fullscreen
+endif
 "Telescope
 "Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
