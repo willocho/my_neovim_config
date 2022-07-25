@@ -3,11 +3,11 @@ let dein_path_base = ''
 let uname = substitute(system('uname'), '\n', '', '')
 if uname == 'Darwin'
     let dein_path_base = '/Users/willochowicz/'
-    set guifont=Fira\ Mono:h11
 elseif uname == 'Linux'
     let dein_path_base = '/home/manager/'
-    set guifont=Liberation\ Mono:h11
 end
+
+set guifont=Fira\ Mono,Liberation\ Mono:h11
 
 let dein_path = dein_path_base . '.cache/dein/repos/github.com/Shougo/dein.vim'
 
