@@ -52,6 +52,7 @@ call dein#begin(dein_path)
     call dein#add('nvim-treesitter/nvim-treesitter', {'build' : ':TSUpdate'})
     call dein#add('ahmedkhalf/project.nvim')
     call dein#add('ahmedkhalf/lsp-rooter.nvim')
+    call dein#add('terrortylor/nvim-comment')
 
 " Required:
 call dein#end()
@@ -72,6 +73,7 @@ colorscheme nightfox
 nnoremap <Leader>e :tabnew ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>E :source ~/.config/nvim/init.vim<CR>
 set hidden
+set foldmethod=syntax
 "Shorter updatetime
 set updatetime=1000
 "remap the j/k keys for moving in menus
@@ -84,9 +86,10 @@ tnoremap <A-k> <Up>
 
 "NvimTree
 nnoremap <silent> <F2> :NvimTreeToggle<CR>
+
+" Put anything you want to happen only in Neovide here
 if exists("g:neovide")
-    " Put anything you want to happen only in Neovide here
-    nnoremap <F11> :let g:neovide_fullscreen = !g:neovide_fullscreen
+    nnoremap <F11> :let g:neovide_fullscreen = !g:neovide_fullscreen<CR>
 endif
 "Telescope
 "Find files using Telescope command-line sugar.
@@ -96,3 +99,4 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>cc <cmd>Telescope git_commits<cr>
 nnoremap <leader>cg <cmd>Telescope git_branches<cr>
+nnoremap <leader>cb <cmd>Telescope git_bcommits<cr>
