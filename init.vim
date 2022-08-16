@@ -34,6 +34,7 @@ endif
 call dein#begin(dein_path)
 
     " Let dein manage dein
+    call dein#add(dein_path)
     " Required:
     call dein#add('EdenEast/nightfox.nvim', {'rev' : 'v1.0.0'})
     call dein#add('nvim-lua/plenary.nvim')
@@ -43,10 +44,16 @@ call dein#begin(dein_path)
     call dein#add('kyazdani42/nvim-tree.lua')
     lua require('nvim-tree').setup{}
     call dein#add('akinsho/toggleterm.nvim', {'rev' : 'v2.*'})
+    "Source zprofile and use npm 12 by default for compiling work projects
     lua require('toggleterm').setup{
     \   open_mapping = [[<C-\>]],
     \   direction = 'horizontal',
-    \   size = 20
+    \   size = 20,
+    \   on_open = function (term)
+    \       if term._Opened == nil or term._Opened == false
+    \           then term:send({ "source ~/.zprofile", "nvm use 12", "clear" })
+    \       end
+    \       term._Opened = true end,
     \}
     call dein#add('neoclide/coc.nvim', {'rev' : 'release'})
     call dein#add('nvim-treesitter/nvim-treesitter', {'build' : ':TSUpdate'})
@@ -89,7 +96,10 @@ nnoremap <silent> <F2> :NvimTreeToggle<CR>
 
 " Put anything you want to happen only in Neovide here
 if exists("g:neovide")
-    nnoremap <F11> :let g:neovide_fullscreen = !g:neovide_fullscreen<CR>
+    " Put anything you want to happen only in Neovide here
+    nnoremap <F11> :let g:neovide_fullscreen = !g:neovide_fullscreen
+    " lazy redraw causes issues in neovide
+    set nolazyredraw
 endif
 "Telescope
 "Find files using Telescope command-line sugar.

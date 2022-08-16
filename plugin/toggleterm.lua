@@ -27,7 +27,7 @@ end
 vim.api.nvim_set_keymap("n", "<leader>g1", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
 
 local event_sim = Terminal:new({
-    id = _event_sim_node_id,
+    id = _event_sim_node_buffer_id,
     dir = "~/Local_Repository/event_sim_node/",
     cmd = "npm run start",
     direction = "float",
