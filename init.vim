@@ -40,7 +40,6 @@ call dein#begin(dein_path)
     call dein#add('nvim-lua/plenary.nvim')
     call dein#add('nvim-telescope/telescope.nvim', {'rev' : 'master'})
     call dein#add('nvim-telescope/telescope-fzf-native.nvim', { 'build': 'make' })
-    call dein#add('/home/manager/.cache/dein/repos/github.com/Shougo/dein.vim')
     call dein#add('kyazdani42/nvim-tree.lua')
     lua require('nvim-tree').setup{}
     call dein#add('akinsho/toggleterm.nvim', {'rev' : 'v2.*'})
