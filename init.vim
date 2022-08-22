@@ -49,8 +49,14 @@ call dein#begin(dein_path)
     \   direction = 'horizontal',
     \   size = 20,
     \   on_open = function (term)
-    \       if term._Opened == nil or term._Opened == false
-    \           then term:send({ "source ~/.zprofile", "nvm use 12", "clear" })
+    \       if term._Opened == nil or term._Opened == false then 
+    \           local handle = io.popen("uname")
+    \           local result = handle:read("*a")
+    \           handle:close()
+    \           if string.match(result, "Darwin") then
+    \               term:send("source ~/.zprofile")
+    \           end
+    \           term:send({ "nvm use 12", "clear" })
     \       end
     \       term._Opened = true end,
     \}

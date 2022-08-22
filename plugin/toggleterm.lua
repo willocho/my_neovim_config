@@ -19,6 +19,8 @@ function _lazygit_toggle()
         float_opts = {
             border = "double"
         },
+        --Skip the on_open function defined in init.vim
+        on_open = function () end,
         dir = current,
     })
     lazygit:toggle()
