@@ -34,3 +34,8 @@ nmap <leader>rn <Plug>(coc-rename)
 " Remap for do codeAction of current line
 xmap <leader>a  <Plug>(coc-codeaction-line)
 nmap <leader>a  <Plug>(coc-codeaction-line)
+
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
+inoremap <expr> <A-j> coc#pum#visible() ? coc#pum#next(1) : "\<Down>"
+inoremap <expr> <A-k> coc#pum#visible() ? coc#pum#prev(1) : "\<Up>"
