@@ -1,4 +1,23 @@
 local termTable = require('toggleterm.terminal')
+    --Source zprofile and use npm 12 by default for compiling work projects
+require('toggleterm').setup{
+    open_mapping = [[<C-\>]],
+    direction = 'horizontal',
+    size = 20,
+    on_open = function (term)
+        if term._Opened == nil or term._Opened == false then 
+            local handle = io.popen("uname")
+            local result = handle:read("*a")
+            handle:close()
+            if string.match(result, "Darwin") then
+                term:send("source ~/.zprofile")
+            end
+            term:send({ "nvm use 12", "clear" })
+        end
+        term._Opened = true
+    end,
+}
+
 local Terminal = termTable.Terminal
 
 local _lazygit_buffer_id = 99

@@ -43,23 +43,6 @@ call dein#begin(dein_path)
     call dein#add('kyazdani42/nvim-tree.lua')
     lua require('nvim-tree').setup{}
     call dein#add('akinsho/toggleterm.nvim', {'rev' : 'v2.*'})
-    "Source zprofile and use npm 12 by default for compiling work projects
-    lua require('toggleterm').setup{
-    \   open_mapping = [[<C-\>]],
-    \   direction = 'horizontal',
-    \   size = 20,
-    \   on_open = function (term)
-    \       if term._Opened == nil or term._Opened == false then 
-    \           local handle = io.popen("uname")
-    \           local result = handle:read("*a")
-    \           handle:close()
-    \           if string.match(result, "Darwin") then
-    \               term:send("source ~/.zprofile")
-    \           end
-    \           term:send({ "nvm use 12", "clear" })
-    \       end
-    \       term._Opened = true end,
-    \}
     call dein#add('neoclide/coc.nvim', {'rev' : 'release'})
     call dein#add('nvim-treesitter/nvim-treesitter', {'build' : ':TSUpdate'})
     call dein#add('ahmedkhalf/project.nvim')
