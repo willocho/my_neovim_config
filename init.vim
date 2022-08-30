@@ -48,7 +48,7 @@ call dein#begin(dein_path)
     call dein#add('ahmedkhalf/project.nvim')
     call dein#add('ahmedkhalf/lsp-rooter.nvim')
     call dein#add('terrortylor/nvim-comment')
-
+    call dein#add('tpope/vim-fugitive')
 " Required:
 call dein#end()
 
