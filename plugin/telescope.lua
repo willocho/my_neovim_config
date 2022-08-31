@@ -50,4 +50,6 @@ telescope.setup{
     }
 }
 
+vim.api.nvim_set_keymap('n', 'gp', ':Telescope projects<CR>', {})
+
 telescope.load_extension('projects')
