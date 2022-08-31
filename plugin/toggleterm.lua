@@ -1,4 +1,5 @@
 local termTable = require('toggleterm.terminal')
+local ui = require('toggleterm.ui')
     --Source zprofile and use npm 12 by default for compiling work projects
 require('toggleterm').setup{
     open_mapping = [[<C-\>]],
@@ -45,7 +46,7 @@ function _lazygit_toggle()
     lazygit:toggle()
 end
 
-vim.api.nvim_set_keymap("n", "<leader>g1", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+vim.keymap.set("n", "<leader>g1", _lazygit_toggle, {noremap = true, silent = true})
 
 local event_sim = Terminal:new({
     id = _event_sim_node_buffer_id,
@@ -62,4 +63,37 @@ function _event_sim_toggle()
     event_sim:toggle()
 end
 
-vim.api.nvim_set_keymap("n", "<leader>g2", "<cmd>lua _event_sim_toggle()<CR>", {noremap = true, silent = true})
+vim.keymap.set("n", "<leader>g2", _event_sim_toggle, {noremap = true, silent = true})
+
+function _current_terminal()
+    local terms = termTable.get_all()
+    local current_buffer_id = vim.api.nvim_get_current_buf()
+    for _, term in pairs(terms) do
+        if term.bufnr == current_buffer_id then return term end
+    end
+end
+
+function _get_next_terminal_buffer()
+    local terms = termTable.get_all()
+    table.sort(terms, function(a, b) return a.id < b.id end)
+    local current_terminal = _current_terminal()
+    local next_terminal = terms[1]
+    for i, term in pairs(terms) do
+        if term.id > current_terminal.id then next_terminal = term; break; end
+    end
+    ui.switch_buf(next_terminal.bufnr)
+end
+
+function _get_previous_terminal_buffer()
+    local terms = termTable.get_all()
+    table.sort(terms, function(a, b) return a.id < b.id end)
+    local current_terminal = _current_terminal()
+    local next_terminal = terms[#terms]
+    for i, term in pairs(terms) do
+        if term.id < current_terminal.id then next_terminal = term end
+    end
+    ui.switch_buf(next_terminal.bufnr)
+end
+
+vim.keymap.set('t', '<A-h>', _get_previous_terminal_buffer, {})
+vim.keymap.set('t', '<A-l>', _get_next_terminal_buffer, {})
