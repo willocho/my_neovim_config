@@ -67,7 +67,7 @@ vim.keymap.set("n", "<leader>g2", _event_sim_toggle, {noremap = true, silent = t
 
 --Functions to enable switching between terminal buffers quickly
 --_current_terminal returns the current terminal if there is one, nil otherwise
-function _current_terminal()
+local function _current_terminal()
     local terms = termTable.get_all()
     local current_buffer_id = vim.api.nvim_get_current_buf()
     for _, term in pairs(terms) do
@@ -78,7 +78,7 @@ end
 
 --Finds the next terminal buffer and switches to it
 --Will switch to the first terminal buffer if a higher id is not found
-function _switch_next_terminal_buffer()
+local function _switch_next_terminal_buffer()
     local current_terminal = _current_terminal()
     --Return if the current buffer is not a terminal or if it's floating
     if current_terminal == nil or current_terminal.direction == 'float' then return end
@@ -96,7 +96,7 @@ end
 
 --Finds the previous terminal buffer and switches to it
 --Will switch to the last terminal buffer if a lower id is not found
-function _switch_previous_terminal_buffer()
+local function _switch_previous_terminal_buffer()
     local current_terminal = _current_terminal()
     --Return if the current buffer is not a terminal or if it's floating
     if current_terminal == nil or current_terminal.direction == 'float' then return end
