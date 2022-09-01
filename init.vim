@@ -49,6 +49,7 @@ call dein#begin(dein_path)
     call dein#add('ahmedkhalf/lsp-rooter.nvim')
     call dein#add('terrortylor/nvim-comment')
     call dein#add('tpope/vim-fugitive')
+    call dein#add('windwp/nvim-projectconfig')
 " Required:
 call dein#end()
 
@@ -68,7 +69,6 @@ colorscheme nightfox
 nnoremap <Leader>e :tabnew ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>E :source ~/.config/nvim/init.vim<CR>
 set hidden
-set foldmethod=syntax
 "Shorter updatetime
 set updatetime=1000
 "remap the j/k keys for moving in menus
