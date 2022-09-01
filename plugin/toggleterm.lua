@@ -80,8 +80,8 @@ end
 --Will switch to the first terminal buffer if a higher id is not found
 function _switch_next_terminal_buffer()
     local current_terminal = _current_terminal()
-    --Return if the current buffer is not a terminal
-    if current_terminal == nil then return end
+    --Return if the current buffer is not a terminal or if it's floating
+    if current_terminal == nil or current_terminal.direction == 'float' then return end
 
     local terms = termTable.get_all()
     table.sort(terms, function(a, b) return a.id < b.id end)
@@ -98,8 +98,8 @@ end
 --Will switch to the last terminal buffer if a lower id is not found
 function _switch_previous_terminal_buffer()
     local current_terminal = _current_terminal()
-    --Return if the current buffer is not a terminal
-    if current_terminal == nil then return end
+    --Return if the current buffer is not a terminal or if it's floating
+    if current_terminal == nil or current_terminal.direction == 'float' then return end
 
     local terms = termTable.get_all()
     table.sort(terms, function(a, b) return a.id < b.id end)
