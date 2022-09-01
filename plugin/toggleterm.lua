@@ -65,35 +65,52 @@ end
 
 vim.keymap.set("n", "<leader>g2", _event_sim_toggle, {noremap = true, silent = true})
 
+--Functions to enable switching between terminal buffers quickly
+--_current_terminal returns the current terminal if there is one, nil otherwise
 function _current_terminal()
     local terms = termTable.get_all()
     local current_buffer_id = vim.api.nvim_get_current_buf()
     for _, term in pairs(terms) do
         if term.bufnr == current_buffer_id then return term end
     end
+    return nil
 end
 
-function _get_next_terminal_buffer()
+--Finds the next terminal buffer and switches to it
+--Will switch to the first terminal buffer if a higher id is not found
+function _switch_next_terminal_buffer()
+    local current_terminal = _current_terminal()
+    --Return if the current buffer is not a terminal
+    if current_terminal == nil then return end
+
     local terms = termTable.get_all()
     table.sort(terms, function(a, b) return a.id < b.id end)
-    local current_terminal = _current_terminal()
     local next_terminal = terms[1]
+
     for i, term in pairs(terms) do
         if term.id > current_terminal.id then next_terminal = term; break; end
     end
+
     ui.switch_buf(next_terminal.bufnr)
 end
 
-function _get_previous_terminal_buffer()
+--Finds the previous terminal buffer and switches to it
+--Will switch to the last terminal buffer if a lower id is not found
+function _switch_previous_terminal_buffer()
+    local current_terminal = _current_terminal()
+    --Return if the current buffer is not a terminal
+    if current_terminal == nil then return end
+
     local terms = termTable.get_all()
     table.sort(terms, function(a, b) return a.id < b.id end)
-    local current_terminal = _current_terminal()
     local next_terminal = terms[#terms]
+
     for i, term in pairs(terms) do
         if term.id < current_terminal.id then next_terminal = term end
     end
+
     ui.switch_buf(next_terminal.bufnr)
 end
 
-vim.keymap.set('t', '<A-h>', _get_previous_terminal_buffer, {})
-vim.keymap.set('t', '<A-l>', _get_next_terminal_buffer, {})
+vim.keymap.set('t', '<A-h>', _switch_previous_terminal_buffer, {})
+vim.keymap.set('t', '<A-l>', _switch_next_terminal_buffer, {})
