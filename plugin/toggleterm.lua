@@ -63,7 +63,14 @@ function _event_sim_toggle()
     event_sim:toggle()
 end
 
+function _new_terminal()
+    local term = Terminal:new { }
+    term:toggle();
+end
+
 vim.keymap.set("n", "<leader>g2", _event_sim_toggle, {noremap = true, silent = true})
+
+vim.keymap.set("n", "<C-J>", _new_terminal, {noremap = true, silent = true})
 
 --Functions to enable switching between terminal buffers quickly
 --_current_terminal returns the current terminal if there is one, nil otherwise
