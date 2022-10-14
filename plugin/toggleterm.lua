@@ -1,15 +1,14 @@
 local termTable = require('toggleterm.terminal')
 local ui = require('toggleterm.ui')
-    --Source zprofile and use npm 12 by default for compiling work projects
 require('toggleterm').setup{
     open_mapping = [[<C-\>]],
-    direction = 'horizontal',
-    size = 20,
+    direction = 'tab',
     on_open = function (term)
         if term._Opened == nil or term._Opened == false then 
             local handle = io.popen("uname")
             local result = handle:read("*a")
             handle:close()
+            --Source zprofile and use npm 12 by default for compiling work projects
             if string.match(result, "Darwin") then
                 term:send("source ~/.zprofile")
             end
@@ -39,7 +38,7 @@ function _lazygit_toggle()
         float_opts = {
             border = "double"
         },
-        --Skip the on_open function defined in init.vim
+        --Skip the on_open function defined at the start of this file
         on_open = function () end,
         dir = current,
     })
@@ -52,7 +51,7 @@ local event_sim = Terminal:new({
     id = _event_sim_node_buffer_id,
     dir = "~/Local_Repository/event_sim_node/",
     cmd = "npm run start",
-    direction = "float",
+    direction = "horizontal",
     float_opts = {
         border = "double"
     },
@@ -118,6 +117,3 @@ local function _switch_previous_terminal_buffer()
 
     ui.switch_buf(next_terminal.bufnr)
 end
-
-vim.keymap.set('t', '<A-h>', _switch_previous_terminal_buffer, {})
-vim.keymap.set('t', '<A-l>', _switch_next_terminal_buffer, {})

@@ -42,7 +42,7 @@ call dein#begin(dein_path)
     call dein#add('nvim-telescope/telescope-fzf-native.nvim', { 'build': 'make' })
     call dein#add('kyazdani42/nvim-tree.lua')
     lua require('nvim-tree').setup{}
-    call dein#add('akinsho/toggleterm.nvim', {'rev' : 'v2.*'})
+    call dein#add('akinsho/toggleterm.nvim', {'rev' : '7abb25ec913b4edf4c0384346da0999726a3d7be'})
     call dein#add('neoclide/coc.nvim', {'rev' : 'release'})
     call dein#add('nvim-treesitter/nvim-treesitter', {'build' : ':TSUpdate'})
     call dein#add('ahmedkhalf/project.nvim')
@@ -69,6 +69,7 @@ colorscheme nightfox
 nnoremap <Leader>e :tabnew ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>E :source ~/.config/nvim/init.vim<CR>
 set hidden
+set nolazyredraw
 "Shorter updatetime
 set updatetime=1000
 "remap the j/k keys for moving in menus
