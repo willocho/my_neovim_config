@@ -13,6 +13,7 @@ require('toggleterm').setup{
                 term:send("source ~/.zprofile")
             end
             term:send({ "nvm use 12", "clear" })
+            term:send({ "zellij" })
         end
         term._Opened = true
     end,
