@@ -69,7 +69,6 @@ colorscheme nightfox
 nnoremap <Leader>e :tabnew ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>E :source ~/.config/nvim/init.vim<CR>
 set hidden
-set nolazyredraw
 "Shorter updatetime
 set updatetime=1000
 "remap the j/k keys for moving in menus
@@ -85,9 +84,8 @@ nnoremap <silent> <F2> :NvimTreeToggle<CR>
 
 " Put anything you want to happen only in Neovide here
 if exists("g:neovide")
-    " Put anything you want to happen only in Neovide here
-    nnoremap <F11> :let g:neovide_fullscreen = !g:neovide_fullscreen
-    " lazy redraw causes issues in neovide
+    nnoremap <F11> :let g:neovide_fullscreen = !g:neovide_fullscreen<CR>
+    " lazy redraw causes issues with the cursor jumping all around in neovide
     set nolazyredraw
 endif
 "Telescope
@@ -99,3 +97,6 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>cc <cmd>Telescope git_commits<cr>
 nnoremap <leader>cg <cmd>Telescope git_branches<cr>
 nnoremap <leader>cb <cmd>Telescope git_bcommits<cr>
+
+set number
+set relativenumber
