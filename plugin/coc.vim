@@ -14,6 +14,8 @@ nmap <silent> <Leader>gY :call CocAction('jumpTypeDefinition')<CR>
 nmap <silent> <Leader>gI :call CocAction('jumpImplementation')<CR>
 nmap <silent> gr <Plug>(coc-references)
 
+nmap <silent> <Leader>gs :CocCommand clangd.switchSourceHeader vsplit<CR>
+
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call ShowDocumentation()<CR>
 
