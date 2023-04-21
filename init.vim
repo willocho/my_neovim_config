@@ -28,13 +28,11 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
-
-
 " Required:
 call dein#begin(dein_path)
 
     " Let dein manage dein
-    call dein#add(dein_path)
+    call dein#add(dein_path, {'rev' : '3.0'})
     " Required:
     call dein#add('EdenEast/nightfox.nvim', {'rev' : 'v1.0.0'})
     call dein#add('nvim-lua/plenary.nvim')
