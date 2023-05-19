@@ -41,3 +41,5 @@ inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
 inoremap <expr> <A-j> coc#pum#visible() ? coc#pum#next(1) : "\<Down>"
 inoremap <expr> <A-k> coc#pum#visible() ? coc#pum#prev(1) : "\<Up>"
+
+nnoremap <silent> <Leader>C :CocCommand 

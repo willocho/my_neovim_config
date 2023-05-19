@@ -6,5 +6,6 @@
             "filetypes" : ["sql", "mysql"]
         }
     },
-    "coc.preferences.jumpCommand": "tab drop"
+    "coc.preferences.jumpCommand": "tab drop",
+    "flutter.sdk.flutter-lookup": "which flutter"
 }
