@@ -1,4 +1,5 @@
 "Check OS
+let mapleader = ","
 let dein_path_base = ''
 let uname = substitute(system('uname'), '\n', '', '')
 if uname == 'Darwin'
