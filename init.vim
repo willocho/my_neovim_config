@@ -69,6 +69,10 @@ set magic
 set ignorecase
 set smartcase
 
+set smarttab
+set expandtab
+set shiftwidth=4
+
 "Misc settings
 colorscheme nightfox
 nnoremap <Leader>e :tabnew ~/.config/nvim/init.vim<CR>
