@@ -4,18 +4,20 @@ let uname = substitute(system('uname'), '\n', '', '')
 if uname == 'Darwin'
     let dein_path_base = '/Users/willochowicz/'
 elseif uname == 'Linux'
-    let dein_path_base = '/home/manager/'
+    let username = substitute(system('echo $USER'), '\n', '', '')
+    let dein_path_base = '/home/'..username..'/'
 end
 
 set guifont=Fira\ Mono,Liberation\ Mono:h11
 
 let dein_path = dein_path_base . '.cache/dein/repos/github.com/Shougo/dein.vim'
 
-
 set runtimepath^=~/.vim runtimepath+=~/.vim/after runtimepath+=~/.config/nvim/
 exe 'set runtimepath+=' . dein_path
 let &packpath = &runtimepath
-source ~/.vimrc
+if filereadable('~/.vimrc')
+    source ~/.vimrc
+endif
 
 let g:python3_host_prog='/usr/bin/python3'
 let g:loaded_python_provider = 0
@@ -36,7 +38,7 @@ call dein#begin(dein_path)
     " Required:
     call dein#add('EdenEast/nightfox.nvim', {'rev' : 'v1.0.0'})
     call dein#add('nvim-lua/plenary.nvim')
-    call dein#add('nvim-telescope/telescope.nvim', {'rev' : 'master'})
+    call dein#add('nvim-telescope/telescope.nvim', {'rev' : '0.1.1'})
     call dein#add('nvim-telescope/telescope-fzf-native.nvim', { 'build': 'make' })
     call dein#add('kyazdani42/nvim-tree.lua')
     lua require('nvim-tree').setup{}
@@ -61,6 +63,10 @@ if dein#check_install()
 endif
 
 "End dein Scripts-------------------------
+
+set magic
+set ignorecase
+set smartcase
 
 "Misc settings
 colorscheme nightfox
