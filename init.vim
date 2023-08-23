@@ -51,6 +51,11 @@ call dein#begin(dein_path)
     call dein#add('terrortylor/nvim-comment')
     call dein#add('tpope/vim-fugitive')
     call dein#add('windwp/nvim-projectconfig')
+    call dein#add('MrcJkb/haskell-tools.nvim')
+    call dein#add('mfussenegger/nvim-dap')
+    call dein#add('dccsillag/magma-nvim', #{
+                \    hook_post_update: ':UpdateRemotePlugin',
+                \})
 " Required:
 call dein#end()
 
