@@ -1,13 +1,23 @@
-"Check OS
+" Default python provider
+let g:python3_host_prog='/usr/bin/python3'
+let g:loaded_python_provider = 0
+
 let mapleader = ","
 let dein_path_base = ''
 let uname = substitute(system('uname'), '\n', '', '')
+let sysname = substitute(system('uname -n'), '\n', '', '')
 if uname == 'Darwin'
-    let dein_path_base = '/Users/willochowicz/'
+    if sysname == 'FHMac-WYFX1FMP6G'
+        let dein_path_base = '/Users/wochowicz/'
+        let g:python3_host_prog='/Users/wochowicz/.pyenv/shims/python'
+    else
+        let dein_path_base = '/Users/willochowicz/'
+    end
 elseif uname == 'Linux'
     let username = substitute(system('echo $USER'), '\n', '', '')
     let dein_path_base = '/home/'..username..'/'
 end
+
 
 set guifont=Fira\ Mono,Liberation\ Mono:h11
 
@@ -19,9 +29,6 @@ let &packpath = &runtimepath
 if filereadable('~/.vimrc')
     source ~/.vimrc
 endif
-
-let g:python3_host_prog='/usr/bin/python3'
-let g:loaded_python_provider = 0
 
 "Remap comma so that you can escape in terminal mode
 tnoremap <C-,> <C-\>
