@@ -6,18 +6,11 @@ telescope.setup{
         find_files = {
             hidden = true,
             find_command = {
-                'rg',
+                'fd',
                 '--color=never',
-                '--files',
-                '--no-ignore',
-                '--iglob',
-                '!.git',
-                '--iglob',
-                '!node_modules/**/*',
-                '--iglob',
-                '!.idea/',
-                '--iglob',
-                '!dist/'
+                '-E node_modules/**/*',
+                '-E .idea/',
+                '-E dist/'
             }
         }
     },
