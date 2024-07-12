@@ -85,6 +85,8 @@ set smarttab
 set expandtab
 set shiftwidth=4
 
+set autochdir
+
 "Misc settings
 colorscheme nightfox
 nnoremap <Leader>e :tabnew ~/.config/nvim/init.vim<CR>
