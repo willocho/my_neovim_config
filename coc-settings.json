@@ -28,5 +28,6 @@
     "sumneko-lua.enableNvimLuaDev": true,
     "coc.preferences.jumpCommand": "tab drop",
     "flutter.sdk.flutter-lookup": "which flutter",
-    "clangd.path": "/usr/bin/clangd"
+    "clangd.path": "/usr/bin/clangd",
+    "java.import.gradle.java.home": "/usr/lib/jvm/java-11-openjdk"
 }
