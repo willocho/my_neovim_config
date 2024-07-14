@@ -12,7 +12,6 @@ require('toggleterm').setup{
             if string.match(result, "Darwin") then
                 term:send("source ~/.zprofile")
             end
-            term:send({ "nvm use 12", "clear" })
             term:send({ "zellij" })
         end
         term._Opened = true
@@ -51,8 +50,6 @@ function _new_terminal()
     local term = Terminal:new { }
     term:toggle();
 end
-
-vim.keymap.set("n", "<C-J>", _new_terminal, {noremap = true, silent = true})
 
 --Functions to enable switching between terminal buffers quickly
 --_current_terminal returns the current terminal if there is one, nil otherwise
