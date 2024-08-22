@@ -4,13 +4,17 @@ require('toggleterm').setup{
     open_mapping = [[<C-\>]],
     direction = 'tab',
     on_open = function (term)
-        if term._Opened == nil or term._Opened == false then 
+        if term._Opened == nil or term._Opened == false then
             local handle = io.popen("uname")
-            local result = handle:read("*a")
-            handle:close()
-            --Source zprofile and use npm 12 by default for compiling work projects
-            if string.match(result, "Darwin") then
-                term:send("source ~/.zprofile")
+            if handle then
+                local result = handle:read("*a")
+                handle:close()
+                --Source zprofile and use npm 12 by default for compiling work projects
+                if string.match(result, "Darwin") then
+                    term:send("source ~/.zprofile")
+                end
+                term:send({ "nvm use 16", "clear" })
+                term:send({ "zellij" })
             end
             term:send({ "zellij" })
         end

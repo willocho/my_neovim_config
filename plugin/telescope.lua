@@ -4,13 +4,10 @@ local telescope = require('telescope')
 telescope.setup{
     pickers = {
         find_files = {
-            hidden = true,
             find_command = {
                 'fd',
                 '--color=never',
-                '-E node_modules/**/*',
-                '-E .idea/',
-                '-E dist/'
+                '-H',
             }
         }
     },
@@ -18,7 +15,9 @@ telescope.setup{
         mappings = {
             i = {
                 ["<A-j>"] = function () actions.move_selection_next(vim.api.nvim_get_current_buf()) end,
-                ["<A-k>"] = function () actions.move_selection_previous(vim.api.nvim_get_current_buf()) end
+                ["<A-k>"] = function () actions.move_selection_previous(vim.api.nvim_get_current_buf()) end,
+                ["<A-h>"] = function () vim.api.nvim_cmd({ cmd = "normal", args = {"h"}}, {}) end,
+                ["<A-l>"] = function () vim.api.nvim_cmd({ cmd = "normal", args = {"l"}}, {}) end,
             }
         },
         vimgrep_arguments = {
@@ -29,15 +28,6 @@ telescope.setup{
             '--line-number',
             '--column',
             '--smart-case',
-            '--iglob',
-            '!.git',
-            '--iglob',
-            '!node_modules/**/*',
-            '--iglob',
-            '!.idea/',
-            '--iglob',
-            '!dist/',
-            '-u'
         },
 
     }

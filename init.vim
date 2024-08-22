@@ -3,25 +3,17 @@ let g:python3_host_prog='/usr/bin/python3'
 let g:loaded_python_provider = 0
 
 let mapleader = ","
-let dein_path_base = ''
 let uname = substitute(system('uname'), '\n', '', '')
 let sysname = substitute(system('uname -n'), '\n', '', '')
-if uname == 'Darwin'
-    if sysname == 'FHMac-WYFX1FMP6G'
-        let dein_path_base = '/Users/wochowicz/'
-        let g:python3_host_prog='/Users/wochowicz/.pyenv/shims/python'
-    else
-        let dein_path_base = '/Users/willochowicz/'
-    end
-elseif uname == 'Linux'
-    let username = substitute(system('echo $USER'), '\n', '', '')
-    let dein_path_base = '/home/'..username..'/'
+if uname == 'Darwin' && sysname == 'FHMac-WYFX1FMP6G'
+    let g:python3_host_prog='/Users/wochowicz/.pyenv/shims/python'
 end
+let dein_path_base = '$HOME'
 
 
 set guifont=Fira\ Mono,Liberation\ Mono:h11
 
-let dein_path = dein_path_base . '.cache/dein/repos/github.com/Shougo/dein.vim'
+let dein_path = dein_path_base . '/.cache/dein/repos/github.com/Shougo/dein.vim'
 
 set runtimepath^=~/.vim runtimepath+=~/.vim/after runtimepath+=~/.config/nvim/
 exe 'set runtimepath+=' . dein_path
@@ -46,7 +38,7 @@ call dein#begin(dein_path)
     " Required:
     call dein#add('EdenEast/nightfox.nvim', {'rev' : 'v1.0.0'})
     call dein#add('nvim-lua/plenary.nvim')
-    call dein#add('nvim-telescope/telescope.nvim', {'rev' : '0.1.1'})
+    call dein#add('nvim-telescope/telescope.nvim', {'rev' : '0.1.4'})
     call dein#add('nvim-telescope/telescope-fzf-native.nvim', { 'build': 'make' })
     call dein#add('kyazdani42/nvim-tree.lua')
     lua require('nvim-tree').setup{}
@@ -60,9 +52,10 @@ call dein#begin(dein_path)
     call dein#add('windwp/nvim-projectconfig')
     call dein#add('MrcJkb/haskell-tools.nvim')
     call dein#add('mfussenegger/nvim-dap')
-    call dein#add('dccsillag/magma-nvim', #{
-                \    hook_post_update: ':UpdateRemotePlugin',
-                \})
+    " call dein#add('vhyrro/luarocks.nvim')
+    "neorg needs a colorscheme with treesitter support
+    " call dein#add('rebelot/kanagawa.nvim')
+    " call dein#add('nvim-neorg/neorg')
 " Required:
 call dein#end()
 
@@ -123,3 +116,5 @@ nnoremap <leader>cb <cmd>Telescope git_bcommits<cr>
 
 set number
 set relativenumber
+
+lua require('config')
