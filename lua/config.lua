@@ -1,3 +1,5 @@
+vim.g.mapleader = ","
+vim.g.maplocalleader = " "
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
   pattern = {"Justfile"},
   callback = function(ev)

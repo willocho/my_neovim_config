@@ -2,7 +2,6 @@
 let g:python3_host_prog='/usr/bin/python3'
 let g:loaded_python_provider = 0
 
-let mapleader = ","
 let uname = substitute(system('uname'), '\n', '', '')
 let sysname = substitute(system('uname -n'), '\n', '', '')
 if uname == 'Darwin' && sysname == 'FHMac-WYFX1FMP6G'
