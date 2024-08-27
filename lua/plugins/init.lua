@@ -1,0 +1,17 @@
+return {
+    {'EdenEast/nightfox.nvim', },
+    {'nvim-lua/plenary.nvim'},
+    {'nvim-telescope/telescope.nvim'},
+    {'nvim-telescope/telescope-fzf-native.nvim', build='make' },
+    {'nvim-tree/nvim-tree.lua', opts={} },
+    {'akinsho/toggleterm.nvim', },
+    {'neoclide/coc.nvim', branch='release' },
+    {'nvim-treesitter/nvim-treesitter', build=':TSUpdate' },
+    {'ahmedkhalf/project.nvim'},
+    {'ahmedkhalf/lsp-rooter.nvim', opts={} },
+    {'terrortylor/nvim-comment'},
+    {'tpope/vim-fugitive'},
+    {'windwp/nvim-projectconfig'},
+    {'MrcJkb/haskell-tools.nvim'},
+    {'mfussenegger/nvim-dap'},
+}
