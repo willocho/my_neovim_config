@@ -11,3 +11,4 @@ vim.api.nvim_create_autocmd({"BufLeave", "BufWinLeave"}, {
       vim.api.nvim_set_option_value('expandtab', true, {})
   end
 })
+require("config.lazy")
