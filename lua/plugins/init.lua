@@ -14,4 +14,5 @@ return {
     {'windwp/nvim-projectconfig'},
     {'MrcJkb/haskell-tools.nvim'},
     {'mfussenegger/nvim-dap'},
+    {'ThePrimeagen/harpoon'},
 }
