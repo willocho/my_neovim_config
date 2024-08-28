@@ -15,3 +15,4 @@ vim.api.nvim_create_autocmd({"BufLeave", "BufWinLeave"}, {
 })
 
 require("config.lazy")
+vim.cmd("colorscheme nightfox")
