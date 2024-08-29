@@ -32,6 +32,33 @@ telescope.setup{
     }
 }
 
-    vim.api.nvim_set_keymap('n', 'gp', ':Telescope projects<CR>', {})
+vim.api.nvim_set_keymap('n', 'gp', ':Telescope projects<CR>', {})
 
-    telescope.load_extension('projects')
+vim.keymap.set('n', '<Leader>F',
+function ()
+    local handle = io.popen('git rev-parse --show-toplevel')
+    if handle ~= nil then
+        local result_path = handle:read('*a')
+        local result = {handle:close()}
+
+        if result[1] and 
+            (result[2] == "exit" or result[2] == nil) and
+            (result[3] == 0 or result[3] == nil) then
+            local builtin = require('telescope.builtin')
+            --remove trailing newline
+            result_path = result_path:gsub('\n', '')
+            builtin.find_files{
+                cwd = result_path,
+                find_command = {
+                    'fd',
+                    '--color=never',
+                    '-H',
+                }
+            }
+        end
+    end
+end,
+{}
+)
+
+telescope.load_extension('projects')
