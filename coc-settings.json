@@ -4,9 +4,7 @@
             "command": "sql-language-server",
             "args" : ["up", "--method", "stdio"],
             "filetypes" : ["sql", "mysql"]
-        }
-    },
-    "languageserver": {
+        },
         "haskell": {
             "command": "haskell-language-server-wrapper",
             "args": ["--lsp"],
@@ -26,8 +24,5 @@
         }
     },
     "sumneko-lua.enableNvimLuaDev": true,
-    "coc.preferences.jumpCommand": "tab drop",
-    "flutter.sdk.flutter-lookup": "which flutter",
-    "clangd.path": "/usr/bin/clangd",
-    "java.import.gradle.java.home": "/usr/lib/jvm/java-11-openjdk"
+    "coc.preferences.jumpCommand": "tab drop"
 }
