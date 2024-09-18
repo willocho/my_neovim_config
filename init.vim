@@ -72,4 +72,5 @@ nnoremap <leader>cb <cmd>Telescope git_bcommits<cr>
 set number
 set relativenumber
 
+set mouse=""`
 lua require('config')
