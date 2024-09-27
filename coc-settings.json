@@ -24,5 +24,6 @@
         }
     },
     "sumneko-lua.enableNvimLuaDev": true,
+    "sumneko-lua.serverDir": "/opt/homebrew/opt/lua-language-server/",
     "coc.preferences.jumpCommand": "tab drop"
 }
