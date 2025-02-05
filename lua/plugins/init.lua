@@ -1,16 +1,16 @@
 return {
     {'EdenEast/nightfox.nvim', },
     {'nvim-lua/plenary.nvim'},
-    {'nvim-telescope/telescope.nvim'},
-    {'nvim-telescope/telescope-fzf-native.nvim', build='make' },
+    {'nvim-telescope/telescope.nvim', lazy = true},
+    {'nvim-telescope/telescope-fzf-native.nvim', build='make', lazy = true },
     {'nvim-tree/nvim-tree.lua', opts={} },
     {'akinsho/toggleterm.nvim', lazy = true},
     {'neoclide/coc.nvim', branch='release' },
     {'nvim-treesitter/nvim-treesitter', build=':TSUpdate' },
-    {'ahmedkhalf/project.nvim'},
+    {'ahmedkhalf/project.nvim', lazy = true},
     {'ahmedkhalf/lsp-rooter.nvim', opts={} },
     {'terrortylor/nvim-comment', lazy = true},
-    {'tpope/vim-fugitive', 
+    {'tpope/vim-fugitive',
         cmd = "G",
         lazy = true
     },
@@ -19,4 +19,23 @@ return {
     {'mfussenegger/nvim-dap', lazy = true},
     {'ThePrimeagen/harpoon', lazy = true},
     {'nvim-tree/nvim-web-devicons'},
+    {'Olical/conjure',
+        lazy = true,
+        ft = { "clojure" },
+    },
+    {
+        "julienvincent/nvim-paredit",
+        ft = { "clojure", "fennel", "lisp", "scheme"},
+        lazy = true
+    },
+    {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+        require("nvim-surround").setup({
+            -- Configuration here, or leave empty to use defaults
+        })
+    end
+    }
 }
