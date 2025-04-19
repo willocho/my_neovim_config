@@ -4,7 +4,7 @@ let g:loaded_python_provider = 0
 
 let uname = substitute(system('uname'), '\n', '', '')
 let sysname = substitute(system('uname -n'), '\n', '', '')
-if uname == 'Darwin' && sysname == 'FHMac-WYFX1FMP6G'
+if uname == 'Darwin' && sysname == 'FHMac-GXJVX1R3GQ'
     let g:python3_host_prog='/Users/wochowicz/.pyenv/shims/python'
 end
 set guifont=Fira\ Mono,Liberation\ Mono:h11
@@ -75,3 +75,4 @@ set relativenumber
 
 set mouse=""`
 lua require('config')
+lua require ('custom_commands')

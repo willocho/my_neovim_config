@@ -1,5 +1,8 @@
 local termTable = require('toggleterm.terminal')
 local ui = require('toggleterm.ui')
+
+local last_opened_buffer = nil
+
 require('toggleterm').setup{
     open_mapping = [[<C-\>]],
     direction = 'tab',
@@ -9,14 +12,13 @@ require('toggleterm').setup{
             if handle then
                 local result = handle:read("*a")
                 handle:close()
-                --Source zprofile and use npm 12 by default for compiling work projects
+                --Source zprofile and use npm 16 by default for compiling work projects
                 if string.match(result, "Darwin") then
                     term:send("source ~/.zprofile")
                 end
                 term:send({ "nvm use 16", "clear" })
                 term:send({ "zellij" })
             end
-            term:send({ "zellij" })
         end
         term._Opened = true
     end,

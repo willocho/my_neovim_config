@@ -5,13 +5,11 @@ return {
     {'nvim-telescope/telescope-fzf-native.nvim', build='make', lazy = true },
     {'nvim-tree/nvim-tree.lua', opts={} },
     {'akinsho/toggleterm.nvim', lazy = true},
-    {'neoclide/coc.nvim', branch='release' },
     {'nvim-treesitter/nvim-treesitter', build=':TSUpdate' },
     {'ahmedkhalf/project.nvim', lazy = true},
-    {'ahmedkhalf/lsp-rooter.nvim', opts={} },
     {'terrortylor/nvim-comment', lazy = true},
     {'tpope/vim-fugitive',
-        cmd = "G",
+        cmd = 'G',
         lazy = true
     },
     {'windwp/nvim-projectconfig', lazy = true},
@@ -21,21 +19,28 @@ return {
     {'nvim-tree/nvim-web-devicons'},
     {'Olical/conjure',
         lazy = true,
-        ft = { "clojure" },
+        ft = { 'clojure' },
     },
     {
-        "julienvincent/nvim-paredit",
-        ft = { "clojure", "fennel", "lisp", "scheme"},
+        'julienvincent/nvim-paredit',
+        ft = { 'clojure', 'fennel', 'lisp', 'scheme'},
         lazy = true
     },
     {
-    "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    event = "VeryLazy",
+    'kylechui/nvim-surround',
+    version = '*', -- Use for stability; omit to use `main` branch for the latest features
+    event = 'VeryLazy',
     config = function()
-        require("nvim-surround").setup({
+        require('nvim-surround').setup({
             -- Configuration here, or leave empty to use defaults
         })
     end
-    }
+    },
+    { 'neovim/nvim-lspconfig', lazy = false },
+    { 'folke/neodev.nvim', opts = {}, lazy = true, ft = { 'lua' }},
+    { 'williamboman/mason.nvim' },
+    { 'williamboman/mason-lspconfig.nvim' },
+    { 'hrsh7th/nvim-cmp' },
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/cmp-buffer' },
 }
