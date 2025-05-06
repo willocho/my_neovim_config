@@ -53,15 +53,15 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 lspconfig.pyright.setup {
     capabilities = capabilities,
     cmd = {'pyright-langserver', '--stdio'},
-    root_dir = function(fname)
-      local util = require 'lspconfig.util'
-      local root_files = {
-        'pyproject.toml',
-        'pyrightconfig.json',
-        '.git',
-      }
-      return util.root_pattern(unpack(root_files))(fname)
-    end,
+    root_markers = {
+      'pyproject.toml',
+      'setup.py',
+      'setup.cfg',
+      'requirements.txt',
+      'Pipfile',
+      'pyrightconfig.json',
+      '.git',
+    },
 }
 lspconfig.lua_ls.setup {
     capabilities = capabilities

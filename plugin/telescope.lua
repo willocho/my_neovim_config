@@ -22,7 +22,7 @@ telescope.setup{
         },
         vimgrep_arguments = {
             'rg',
-            '--color=never',
+            -- '--color=never',
             '--no-heading',
             '--with-filename',
             '--line-number',
@@ -80,7 +80,7 @@ function ()
                 cwd = result_path,
                 find_command = {
                   'rg',
-                  '--color=never',
+                  -- '--color=never',
                   '--no-heading',
                   '--with-filename',
                   '--line-number',
