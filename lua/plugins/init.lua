@@ -44,4 +44,13 @@ return {
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-buffer' },
     { 'github/copilot.vim' }, --Github Copilot
+    {
+        "greggh/claude-code.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim", -- Required for git operations
+        },
+        config = function()
+            require("claude-code").setup()
+        end
+    },
 }

@@ -15,7 +15,7 @@ if filereadable('~/.vimrc')
 endif
 
 "Remap comma so that you can escape in terminal mode
-tnoremap <C-,> <C-\>
+tnoremap <C-S-,> <C-\>
 
 if &compatible
   set nocompatible               " Be iMproved
