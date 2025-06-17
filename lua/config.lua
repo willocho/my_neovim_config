@@ -181,3 +181,37 @@ vim.api.nvim_create_autocmd('LspAttach', {
           end
         end,
       })
+
+
+-- Set shiftwidth for JS, JSX, TS, TSX files
+local default_shiftwidth = 4
+
+-- Store original values when entering JS/TS files
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  pattern = {"*.js", "*.jsx", "*.ts", "*.tsx"},
+  callback = function()
+    -- Set the shiftwidth to 2 (or your preferred value)
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+    vim.opt_local.expandtab = true
+
+    -- Optional: Print confirmation message
+    -- print("JavaScript/TypeScript settings applied: shiftwidth=2")
+  end,
+  desc = "Set shiftwidth for JavaScript and TypeScript files"
+})
+
+-- Reset to default values when leaving JS/TS files
+vim.api.nvim_create_autocmd({"BufLeave"}, {
+  pattern = {"*.js", "*.jsx", "*.ts", "*.tsx"},
+  callback = function()
+    -- Reset back to default value
+    vim.opt_local.shiftwidth = default_shiftwidth
+    vim.opt_local.tabstop = default_shiftwidth
+    -- Keep expandtab as is, or change if needed
+
+    -- Optional: Print confirmation message
+    -- print("Reset to default settings: shiftwidth=" .. default_shiftwidth)
+  end,
+  desc = "Reset shiftwidth when leaving JavaScript and TypeScript files"
+})
