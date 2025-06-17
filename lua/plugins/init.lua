@@ -43,4 +43,5 @@ return {
     { 'hrsh7th/nvim-cmp' },
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-buffer' },
+    { 'github/copilot.vim' }, --Github Copilot
 }
