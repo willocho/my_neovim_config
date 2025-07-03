@@ -49,6 +49,15 @@ local function longest_matching_lsp_workspace_dir()
                 end
             end
         end
+        if client.config and client.config.root_dir then
+            -- Check if file_path starts with root_dir
+            local root_dir = client.config.root_dir
+            if vim.startswith(file_path, root_dir)
+                and (longest_matching_workspace_path == nil
+                    or string.len(root_dir) > string.len(longest_matching_workspace_path)) then
+                longest_matching_workspace_path = root_dir
+            end
+        end
     end
     return longest_matching_workspace_path
 end
