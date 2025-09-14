@@ -1,12 +1,28 @@
 local termTable = require('toggleterm.terminal')
 local ui = require('toggleterm.ui')
 
-local last_opened_buffer = nil
+-- Store the previous tab number
+local terminal_tab = nil
+
+-- Helper function to get current tab number
+local function get_current_tab()
+      return vim.fn.tabpagenr()
+end
+
+-- Helper function to switch to a specific tab
+local function switch_to_tab(tab_nr)
+    print(tab_nr)
+    if tab_nr then
+        vim.cmd(tab_nr .. 'tabn')
+    end
+end
 
 require('toggleterm').setup{
     open_mapping = [[<C-\>]],
     direction = 'tab',
     on_open = function (term)
+        terminal_tab = get_current_tab()
+        print(terminal_tab)
         if term._Opened == nil or term._Opened == false then
             local handle = io.popen("uname")
             if handle then
@@ -21,6 +37,13 @@ require('toggleterm').setup{
             end
         end
         term._Opened = true
+    end,
+    on_close = function(_)
+        -- Return to the previous tab when closing
+        if terminal_tab then
+            switch_to_tab(terminal_tab-1)
+            terminal_tab = nil
+        end
     end,
 }
 
