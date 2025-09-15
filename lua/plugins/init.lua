@@ -43,6 +43,7 @@ return {
     { 'hrsh7th/nvim-cmp' },
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-buffer' },
+    -- { 'github/copilot.vim' }, --Github Copilot
     {
         "greggh/claude-code.nvim",
         dependencies = {
@@ -57,4 +58,5 @@ return {
       version = '^6', -- Recommended
       lazy = false, -- This plugin is already lazy
     },
+    { 'tpope/vim-unimpaired' },
 }
