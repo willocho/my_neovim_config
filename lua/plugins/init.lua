@@ -6,7 +6,30 @@ return {
     {'nvim-tree/nvim-tree.lua', opts={} },
     {'akinsho/toggleterm.nvim', lazy = true},
     {'nvim-treesitter/nvim-treesitter', build=':TSUpdate' },
-    {'ahmedkhalf/project.nvim', lazy = true},
+    {
+        'DrKJeff16/project.nvim',
+        lazy = true,
+        version = false, -- Get the latest release
+        cmd = { -- Lazy-load by commands
+            'Project',
+            'ProjectAdd',
+            'ProjectConfig',
+            'ProjectDelete',
+            'ProjectHistory',
+            'ProjectRecents',
+            'ProjectRoot',
+            'ProjectSession',
+        },
+        dependencies = { -- OPTIONAL
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope.nvim',
+            'ibhagwan/fzf-lua',
+        },
+        ---@module 'project'
+
+        ---@type Project.Config.Options
+        opts = {},
+    },
     {'terrortylor/nvim-comment', lazy = true},
     {'tpope/vim-fugitive',
         cmd = 'G',
