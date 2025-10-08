@@ -21,21 +21,13 @@ vim.keymap.set({'n', 'v', 'i'},
 vim.cmd("colorscheme nightfox")
 
 -------------------- LSP Stuff --------------------- -
-vim.lsp.config('pyright', {
-    root_markers = {
-      'pyproject.toml',
-      'setup.py',
-      'setup.cfg',
-      'requirements.txt',
-      'Pipfile',
-      'pyrightconfig.json',
-      '.git',
-    },
-    cmd = {'pyright-langserver', '--stdio'},
-})
 vim.lsp.enable('pyright')
 
 vim.lsp.config("lua_ls", {
+    cmd = { 'lua-language-server' },
+    filetypes = { 'lua' },
+    root_markers = { { '.luarc.json', '.luarc.jsonc' }, '.git' },
+    telemetry = { enabled = true },
     settings = {
         Lua = {
             diagnostics = {
@@ -46,7 +38,9 @@ vim.lsp.config("lua_ls", {
             }}})
 vim.lsp.enable('lua_ls')
 
+vim.lsp.config('ts_ls', {})
 vim.lsp.enable('ts_ls')
+vim.lsp.config('rust_analyzer', {})
 vim.lsp.enable('rust_analyzer')
 
 -------------------- A Bunch of LSP Commands and Autocommands --------------------- -
