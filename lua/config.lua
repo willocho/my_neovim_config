@@ -20,39 +20,8 @@ vim.keymap.set({'n', 'v', 'i'},
 
 vim.cmd("colorscheme nightfox")
 
--------------------- Other Plugins -------------------- 
-local cmp = require'cmp'
-cmp.setup{
-    snippet = {
-        expand = function(args)
-            vim.snippet.expand(args.body)
-        end,
-    },
-    mapping = cmp.mapping.preset.insert({
-      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    }),
-    sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
-    }, {
-        {name = 'buffer'},
-    }),
-}
-
 -------------------- LSP Stuff --------------------- -
-require'mason'.setup()
-require'mason-lspconfig'.setup()
-require'neodev'.setup{}
-
-local lspconfig = require'lspconfig'
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
---
-lspconfig.pyright.setup {
-    capabilities = capabilities,
-    cmd = {'pyright-langserver', '--stdio'},
+vim.lsp.config('pyright', {
     root_markers = {
       'pyproject.toml',
       'setup.py',
@@ -62,16 +31,23 @@ lspconfig.pyright.setup {
       'pyrightconfig.json',
       '.git',
     },
-}
-lspconfig.lua_ls.setup {
-    capabilities = capabilities
-}
-lspconfig.ts_ls.setup {
-    capabilities = capabilities
-}
-lspconfig.rust_analyzer.setup {
-    capabilities = capabilities
-}
+    cmd = {'pyright-langserver', '--stdio'},
+})
+vim.lsp.enable('pyright')
+
+vim.lsp.config("lua_ls", {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { "vim" }},
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true)},
+            }}})
+vim.lsp.enable('lua_ls')
+
+vim.lsp.enable('ts_ls')
+vim.lsp.enable('rust_analyzer')
 
 -------------------- A Bunch of LSP Commands and Autocommands --------------------- -
 vim.api.nvim_create_autocmd('LspAttach', {

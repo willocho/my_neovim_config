@@ -12,51 +12,5 @@ return {
         cmd = 'G',
         lazy = true
     },
-    {'windwp/nvim-projectconfig', lazy = true},
-    {'MrcJkb/haskell-tools.nvim', lazy = true},
-    {'mfussenegger/nvim-dap', lazy = true},
-    {'ThePrimeagen/harpoon', lazy = true},
-    {'nvim-tree/nvim-web-devicons'},
-    {'Olical/conjure',
-        lazy = true,
-        ft = { 'clojure' },
-    },
-    {
-        'julienvincent/nvim-paredit',
-        ft = { 'clojure', 'fennel', 'lisp', 'scheme'},
-        lazy = true
-    },
-    {
-    'kylechui/nvim-surround',
-    version = '*', -- Use for stability; omit to use `main` branch for the latest features
-    event = 'VeryLazy',
-    config = function()
-        require('nvim-surround').setup({
-            -- Configuration here, or leave empty to use defaults
-        })
-    end
-    },
-    { 'neovim/nvim-lspconfig', lazy = false },
-    { 'folke/neodev.nvim', opts = {}, lazy = true, ft = { 'lua' }},
-    { 'williamboman/mason.nvim' },
-    { 'williamboman/mason-lspconfig.nvim' },
-    { 'hrsh7th/nvim-cmp' },
-    { 'hrsh7th/cmp-nvim-lsp' },
-    { 'hrsh7th/cmp-buffer' },
-    -- { 'github/copilot.vim' }, --Github Copilot
-    {
-        "greggh/claude-code.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim", -- Required for git operations
-        },
-        config = function()
-            require("claude-code").setup()
-        end
-    },
-    {
-      'willocho/haskell-tools.nvim',
-      version = '^6', -- Recommended
-      lazy = false, -- This plugin is already lazy
-    },
     { 'tpope/vim-unimpaired' },
 }
