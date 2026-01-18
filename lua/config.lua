@@ -43,7 +43,46 @@ vim.lsp.enable('ts_ls')
 vim.lsp.config('rust_analyzer', {})
 vim.lsp.enable('rust_analyzer')
 
--------------------- A Bunch of LSP Commands and Autocommands --------------------- -
+-------------------------- Autocompletion -------------------------------------------
+local cmp = require'cmp'
+cmp.setup{
+    snippet = {
+        expand = function(args)
+            vim.snippet.expand(args.body)
+        end,
+    },
+    sources = {
+        { name = 'nvim_lsp' },
+        { name = 'buffer' },
+    },
+    mapping = cmp.mapping.preset.insert({
+        ["<CR>"] = cmp.mapping({
+            i = function(fallback)
+                if cmp.visible() and cmp.get_active_entry() then
+                    cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+                else
+                    fallback()
+                end
+            end,
+            s = cmp.mapping.confirm({ select = true }),
+            c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+        }),
+        ["<Tab>"] = cmp.mapping({
+            i = function(fallback)
+                if cmp.visible() and cmp.get_active_entry() then
+                    cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = false })
+                else
+                    fallback()
+                end
+            end,
+            s = cmp.mapping.confirm({ select = true }),
+            c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true }),
+        }),
+    }),
+}
+
+
+-------------------- A Bunch of LSP Commands and Autocommands -----------------------
 vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
         callback = function(event)
