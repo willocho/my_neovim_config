@@ -40,4 +40,8 @@ return {
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-buffer' },
     { 'neovim/nvim-lspconfig' },
+    {
+        dir = "~/.config/nvim/plugin/will",
+        lazy = false,
+    }
 }
