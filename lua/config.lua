@@ -60,7 +60,7 @@ cmp.setup{
         ["<CR>"] = cmp.mapping(
             function(fallback)
                 if cmp.visible() then
-                    cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+                    cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
                 else
                     fallback()
                 end
