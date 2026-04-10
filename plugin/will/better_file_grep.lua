@@ -59,6 +59,14 @@ local function longest_matching_lsp_workspace_dir()
             end
         end
     end
+    -- Narrow to the current git worktree if the LSP workspace is a broader parent.
+    if longest_matching_workspace_path then
+        local worktree_root = get_git_directory()
+        if worktree_root and vim.startswith(worktree_root, longest_matching_workspace_path) then
+            longest_matching_workspace_path = worktree_root
+        end
+    end
+
     return longest_matching_workspace_path
 end
 
