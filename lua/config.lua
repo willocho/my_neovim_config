@@ -21,7 +21,7 @@ vim.keymap.set({'n', 'v', 'i'},
 vim.cmd("colorscheme nightfox")
 
 -------------------- LSP Stuff --------------------- -
-vim.lsp.enable('pyright')
+vim.lsp.enable('basedpyright')
 
 vim.lsp.config("lua_ls", {
     cmd = { 'lua-language-server' },
