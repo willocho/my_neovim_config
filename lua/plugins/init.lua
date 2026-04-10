@@ -5,7 +5,7 @@ return {
     {'nvim-telescope/telescope-fzf-native.nvim', build='make', lazy = true },
     {'nvim-tree/nvim-tree.lua', opts={} },
     {'akinsho/toggleterm.nvim', lazy = true},
-    {'nvim-treesitter/nvim-treesitter', build=':TSUpdate' },
+    {'nvim-treesitter/nvim-treesitter', build=':TSUpdate', lazy=false, branch='main'},
     {
         'DrKJeff16/project.nvim',
         lazy = true,
