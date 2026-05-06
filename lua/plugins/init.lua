@@ -32,7 +32,7 @@ return {
     },
     {'terrortylor/nvim-comment', lazy = true},
     {'tpope/vim-fugitive',
-        cmd = 'G',
+        cmd = {'G', 'Gvdiffsplit'},
         lazy = true
     },
     { 'tpope/vim-unimpaired' },
