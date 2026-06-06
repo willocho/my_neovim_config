@@ -43,6 +43,7 @@ vim.lsp.enable('ts_ls')
 vim.lsp.config('rust_analyzer', {})
 vim.lsp.enable('rust_analyzer')
 vim.lsp.enable('beancount')
+vim.lsp.enable('clojure_lsp')
 
 -------------------------- Autocompletion -------------------------------------------
 local cmp = require'cmp'
