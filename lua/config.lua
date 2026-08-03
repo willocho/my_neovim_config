@@ -23,6 +23,10 @@ vim.cmd("colorscheme nightfox")
 -------------------- LSP Stuff --------------------- -
 vim.lsp.enable('basedpyright')
 
+vim.lsp.config('basedpyright', {
+    root_markers = {{'pyproject.toml', 'poetry.lock'}, 'requirements.txt', '.git'}
+})
+
 vim.lsp.config("lua_ls", {
     cmd = { 'lua-language-server' },
     filetypes = { 'lua' },
@@ -224,3 +228,7 @@ vim.api.nvim_create_autocmd({"BufLeave"}, {
   end,
   desc = "Reset shiftwidth when leaving JavaScript and TypeScript files"
 })
+
+
+--Conjure configuration
+vim.g["conjure#mapping#doc_word"] = "gk"
