@@ -21,9 +21,9 @@ vim.keymap.set({'n', 'v', 'i'},
 vim.cmd("colorscheme nightfox")
 
 -------------------- LSP Stuff --------------------- -
-vim.lsp.enable('basedpyright')
+vim.lsp.enable('ty')
 
-vim.lsp.config('basedpyright', {
+vim.lsp.config('ty', {
     root_markers = {{'pyproject.toml', 'poetry.lock'}, 'requirements.txt', '.git'}
 })
 
